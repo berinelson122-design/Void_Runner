@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-red: #FF003C;
+  --color-neon-violet: #E056FD;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  background-color: #000000;
+  color: #E5E5E5;
+  cursor: crosshair;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000000;
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #FF003C;
+  color: #FFFFFF;
+}
