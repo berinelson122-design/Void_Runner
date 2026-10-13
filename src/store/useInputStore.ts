@@ -16,6 +16,9 @@ export const DEFAULT_BINDINGS: Record<CommandNode, ControlBinding> = {
   ACTION: { pc: 'Space', mobile: 'Tap Action', console: 'Button X / Right Trigger' },
   BOMB: { pc: 'KeyE', mobile: 'Tap Bomb', console: 'Button Y / Left Trigger' },
   FOCUS: { pc: 'ShiftLeft', mobile: 'Hold Focus', console: 'Left Shoulder LB' },
+  /* NEW CODE ADDITIONS START: SHIFT COMMAND BINDINGS */
+  SHIFT: { pc: 'Shift / KeyF / Space', mobile: 'Tap Shift Button', console: 'Left Shoulder LB / Button X' },
+  /* NEW CODE ADDITIONS END: SHIFT COMMAND BINDINGS */
 };
 // --- CONTROL SETTINGS END ---
 
@@ -41,6 +44,9 @@ const defaultCommands: Record<CommandNode, boolean> = {
   ACTION: false,
   BOMB: false,
   FOCUS: false,
+  /* NEW CODE ADDITIONS START: DEFAULT SHIFT COMMAND STATE */
+  SHIFT: false,
+  /* NEW CODE ADDITIONS END: DEFAULT SHIFT COMMAND STATE */
 };
 
 export const useInputStore = create<InputState>((set) => ({

@@ -1,0 +1,6 @@
+{
+  "name": "VOID NINJA // ENDLESS DIMENSION",
+  "description": "Cyberpunk 3D endless runner featuring Web Audio synthesis, real-time procedural dimension rendering, local storage best distance tracking, and hardware telemetry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

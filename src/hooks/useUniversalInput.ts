@@ -5,7 +5,7 @@ import { CommandNode } from '../types';
 
 export const useUniversalInput = () => {
   const { setCommand, setDevice, triggerCommand } = useInputStore();
-  const { moveLane, setJumping, setSliding, isJumping, isSliding } = useGameStore();
+  const { moveLane, setJumping, setSliding, isJumping, isSliding, triggerDimensionShift } = useGameStore();
 
   useEffect(() => {
     let touchStartX = 0;
@@ -26,7 +26,9 @@ export const useUniversalInput = () => {
         ArrowRight: 'RIGHT',
         KeyD: 'RIGHT',
         Space: 'ACTION',
-        ShiftLeft: 'FOCUS',
+        ShiftLeft: 'SHIFT',
+        ShiftRight: 'SHIFT',
+        KeyF: 'SHIFT',
         KeyE: 'BOMB',
       };
 
@@ -38,6 +40,11 @@ export const useUniversalInput = () => {
         if (cmd === 'RIGHT') moveLane('RIGHT');
         if (cmd === 'UP' && !isJumping) setJumping(true);
         if (cmd === 'DOWN' && !isSliding) setSliding(true);
+        /* NEW CODE ADDITIONS START: TRIGGER SHIFT VIA KEYBOARD */
+        if (cmd === 'SHIFT' || cmd === 'ACTION') {
+          triggerDimensionShift();
+        }
+        /* NEW CODE ADDITIONS END: TRIGGER SHIFT VIA KEYBOARD */
       }
     };
 
@@ -52,7 +59,9 @@ export const useUniversalInput = () => {
         ArrowRight: 'RIGHT',
         KeyD: 'RIGHT',
         Space: 'ACTION',
-        ShiftLeft: 'FOCUS',
+        ShiftLeft: 'SHIFT',
+        ShiftRight: 'SHIFT',
+        KeyF: 'SHIFT',
         KeyE: 'BOMB',
       };
       const cmd = keyMap[e.code];
@@ -126,6 +135,14 @@ export const useUniversalInput = () => {
           setSliding(true);
           triggerCommand('DOWN');
         }
+
+        /* NEW CODE ADDITIONS START: GAMEPAD SHIFT TRIGGER */
+        // Dimension Shift (Button 2 / Button 4 LB / Button 5 RB)
+        if (gp.buttons[2]?.pressed || gp.buttons[4]?.pressed || gp.buttons[5]?.pressed) {
+          triggerCommand('SHIFT');
+          triggerDimensionShift();
+        }
+        /* NEW CODE ADDITIONS END: GAMEPAD SHIFT TRIGGER */
       }
 
       gamepadAnimationId = requestAnimationFrame(pollGamepad);
@@ -146,5 +163,5 @@ export const useUniversalInput = () => {
       window.removeEventListener('touchend', handleTouchEnd);
       cancelAnimationFrame(gamepadAnimationId);
     };
-  }, [moveLane, setJumping, setSliding, isJumping, isSliding, setCommand, setDevice, triggerCommand]);
+  }, [moveLane, setJumping, setSliding, isJumping, isSliding, setCommand, setDevice, triggerCommand, triggerDimensionShift]);
 };
