@@ -1,25 +1,23 @@
-# Void RPG Builder
+# Void Runner: 3D Dimension Shift
 
-A browser-based visual level editor and event orchestrator for 2D RPG games. Designed to allow for narrative scripting and map building without hard-coding level data.
+An endless 3D runner built for the browser. Features procedural level generation and a dynamic ninja character model.
 
-### [Live Demo](https://void-builder-iota.vercel.app/)
+### [Live Demo](https://void-runner-ten.vercel.app/)
 
-![Editor Screenshot](link-to-your-screenshot)
+![Runner Gameplay](link-to-your-gif)
 
 ### Tech Stack
-* **Frontend:** React, TypeScript
-* **State:** Zustand (Undo/Redo history stack, Layer management)
-* **Logic:** BFS Pathfinding (for touch-to-move input)
-* **Exporting:** JSON data serialization
+* **Rendering:** Three.js
+* **Framework:** React / TypeScript
+* **Physics:** Procedural Z-index object pooling
 
 ### Key Features
-* **Multi-Layer Rendering:** Separates background, decoration, and entity layers for clean map composition.
-* **Event Orchestrator:** A visual timeline for scripting dialogue steps, background music swaps, and combat encounters.
-* **State History:** Implements a custom undo/redo stack that tracks map snapshots, allowing non-destructive editing.
-* **Local Persistence:** Uses `localStorage` to save project drafts, enabling users to refresh the page without losing their map data.
+* **Procedural World:** Obstacles and collectibles are spawned based on distance traveled, increasing in frequency to scale difficulty.
+* **Camera Lerping:** Uses `THREE.MathUtils.lerp` for smooth camera tracking of the player character.
+* **Procedural Animation:** Character limbs are animated mathematically using `Math.sin` to simulate running without heavy 3D skeletal rigging.
 
 ### Setup
 ```bash
-git clone https://github.com/berinelson122-design/void-rpg-builder
+git clone https://github.com/berinelson122-design/void-runner-3d
 npm install
 npm run dev
